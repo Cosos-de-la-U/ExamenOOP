@@ -4,21 +4,24 @@
  * and open the template in the editor.
  */
 package Interfacez;
+
 import Clases.Producto;
 import Clases.Proveedor;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author raulh
  */
 public class productoPane extends javax.swing.JFrame {
-    ArrayList<Producto>lProducto = new ArrayList<>();
+
+    ArrayList<Producto> lProducto = new ArrayList<>();
     DefaultTableModel mdProducto = new DefaultTableModel();
 
-    
-    public void rellenarTabla(){
-        ArrayList<Object>lCabeza = new ArrayList<>();
+    public void rellenarTabla() {
+        ArrayList<Object> lCabeza = new ArrayList<>();
         lCabeza.add("Nombre");
         lCabeza.add("Precio");
         lCabeza.add("Cantidad");
@@ -28,23 +31,23 @@ public class productoPane extends javax.swing.JFrame {
         }
         tbProducto.setModel(mdProducto);
     }
-    public void reproducirCbProveedor(ArrayList<Proveedor> proveedores){
+
+    public void reproducirCbProveedor(ArrayList<Proveedor> proveedores) {
         proveedores.forEach((dato) -> {
             cbProveedor.addItem(dato.nombre.toString());
         });
     }
-    
+
     private productoPane() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     public productoPane(ArrayList<Proveedor> proveedores, vVentas ventasJframe) {
         initComponents();
         rellenarTabla();
         reproducirCbProveedor(proveedores);
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -179,22 +182,28 @@ public class productoPane extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-         //Añadir productos como ejemplo
-        Producto producto = new Producto();
-        producto.nombre = jtNombre.getText();
-        producto.precio = Double.parseDouble(spPrecio.getValue().toString());
-        producto.cantidad = spCantidad.getValue().hashCode();
-        producto.lProveedor = cbProveedor.getSelectedItem().toString();
-        lProducto.add(producto);
-        lProducto.forEach((rows) -> {
-            String [] rowsTabla = {
-                rows.nombre,
-                Double.toString(rows.precio),
-                Integer.toString(rows.cantidad)
-            };
-            mdProducto.addRow(rowsTabla);
-        });
-        tbProducto.setModel(mdProducto);
+        //Añadir productos como ejemplo
+        if (cbProveedor.getSelectedItem() != null) {
+            mdProducto.setRowCount(0);
+            Producto producto = new Producto();
+            producto.nombre = jtNombre.getText();
+            producto.precio = Double.parseDouble(spPrecio.getValue().toString());
+            producto.cantidad = spCantidad.getValue().hashCode();
+            String proveedor = cbProveedor.getSelectedItem().toString();
+            lProducto.add(producto);
+            lProducto.forEach((rows) -> {
+                String[] rowsTabla = {
+                    rows.nombre,
+                    Double.toString(rows.precio),
+                    Integer.toString(rows.cantidad),
+                    proveedor
+                };
+                mdProducto.addRow(rowsTabla);
+            });
+            tbProducto.setModel(mdProducto);
+        }else {
+            JOptionPane.showMessageDialog(null, "Agregue proveedor si falta, no se puede dejar vacio");
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**

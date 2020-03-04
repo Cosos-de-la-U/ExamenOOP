@@ -13,5 +13,13 @@ public class Ventas {
     public String nombre;
     public double cantidad;
     public double total;
-    
+
+    public Ventas() {
+    }
+
+    public Ventas(String nombre, double cantidad, double total) {
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.total = total;
+    }
 }

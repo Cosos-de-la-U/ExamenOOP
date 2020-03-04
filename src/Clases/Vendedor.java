@@ -15,13 +15,13 @@ public class Vendedor {
     public String dirección;
     public String contacto;
 
+    public Vendedor() {
+    }
+    
     public Vendedor(String código, String nombre, String dirección, String contacto) {
         this.código = código;
         this.nombre = nombre;
         this.dirección = dirección;
         this.contacto = contacto;
-    }
-    
-    
-    
+    }   
 }
