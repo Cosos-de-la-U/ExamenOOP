@@ -36,7 +36,7 @@ public class Proveedores extends javax.swing.JFrame {
         mdProveedor = new DefaultTableModel();
         ArrayList<Object> lCabeza = new ArrayList<>();
         lCabeza.add("Nombre");
-        lCabeza.add("Datos");
+        lCabeza.add("Contacto");
         for (Object object : lCabeza) {
             mdProveedor.addColumn(object);
         }
@@ -44,7 +44,7 @@ public class Proveedores extends javax.swing.JFrame {
         lProveedores.forEach(rows -> {
             String[] rowsTabla = {
                 rows.nombre,
-                    rows.contacto
+                rows.contacto
             };
             mdProveedor.addRow(rowsTabla);
         });

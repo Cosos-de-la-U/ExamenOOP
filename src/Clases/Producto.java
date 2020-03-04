@@ -5,6 +5,8 @@
  */
 package Clases;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author raulh
@@ -13,4 +15,5 @@ public class Producto {
     public String nombre;
     public double precio;
     public int cantidad;
+    public ArrayList<Proveedor>lProveedor;
 }

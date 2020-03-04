@@ -5,6 +5,7 @@
  */
 package Interfacez;
 import Clases.Producto;
+import Clases.Proveedor;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -14,6 +15,8 @@ import javax.swing.table.DefaultTableModel;
 public class productoPane extends javax.swing.JFrame {
     ArrayList<Producto>lProducto = new ArrayList<>();
     DefaultTableModel mdProducto = new DefaultTableModel();
+
+    
     public void rellenarTabla(){
         ArrayList<Object>lCabeza = new ArrayList<>();
         lCabeza.add("Nombre");
@@ -25,11 +28,23 @@ public class productoPane extends javax.swing.JFrame {
         }
         tbProducto.setModel(mdProducto);
     }
-    public productoPane() {
+    public void reproducirCbProveedor(ArrayList<Proveedor> proveedores){
+        proveedores.forEach((dato) -> {
+            cbProveedor.addItem(dato.nombre.toString());
+        });
+    }
+    
+    private productoPane() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public productoPane(ArrayList<Proveedor> proveedores, vVentas ventasJframe) {
         initComponents();
         rellenarTabla();
+        reproducirCbProveedor(proveedores);
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,7 +68,7 @@ public class productoPane extends javax.swing.JFrame {
         cbProveedor = new javax.swing.JComboBox<>();
         btnAgregar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Ver Productos"));
 
@@ -169,6 +184,7 @@ public class productoPane extends javax.swing.JFrame {
         producto.nombre = jtNombre.getText();
         producto.precio = Double.parseDouble(spPrecio.getValue().toString());
         producto.cantidad = spCantidad.getValue().hashCode();
+        producto.lProveedor = cbProveedor.getSelectedItem().toString();
         lProducto.add(producto);
         lProducto.forEach((rows) -> {
             String [] rowsTabla = {
