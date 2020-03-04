@@ -25,11 +25,15 @@ public class vVentas extends javax.swing.JFrame {
             case "cbVendedores":
                 this.SetVendedoresCb();
                 break;
+            case "cbProducto":
+                this.setProductosCb();
+                break;
         }
     }
     ArrayList<Cliente>lClientes = new ArrayList<>();
     ArrayList<Proveedor> lProveedores = new ArrayList<Proveedor>();
     ArrayList<Vendedor> lVendedor = new ArrayList<Vendedor>();
+    ArrayList<Producto> lProductos = new ArrayList<Producto>();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -374,6 +378,14 @@ public class vVentas extends javax.swing.JFrame {
     
         this.lVendedor.forEach(vendedor->{
             this.cbVendedores.addItem(vendedor.nombre);
+        });
+        
+    }
+    
+    void setProductosCb(){
+    
+        this.lProductos.forEach(producto->{
+            this.cbProducto.addItem(producto.nombre+"$: "+producto.precio);
         });
         
     }

@@ -15,13 +15,15 @@ public class Producto {
     public String nombre;
     public double precio;
     public int cantidad;
+    public String proveedor;
     
     public Producto() {
     }
 
-    public Producto(String nombre, double precio, int cantidad) {
+    public Producto(String nombre, double precio, int cantidad, String proveedor) {
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;
+        this.proveedor = proveedor;
     }  
 }

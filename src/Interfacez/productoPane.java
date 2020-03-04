@@ -19,6 +19,7 @@ public class productoPane extends javax.swing.JFrame {
 
     ArrayList<Producto> lProducto = new ArrayList<>();
     DefaultTableModel mdProducto = new DefaultTableModel();
+    vVentas ventasAccesoJframe;
 
     public void rellenarTabla() {
         ArrayList<Object> lCabeza = new ArrayList<>();
@@ -29,6 +30,17 @@ public class productoPane extends javax.swing.JFrame {
         for (Object columns : lCabeza) {
             mdProducto.addColumn(columns);
         }
+        ventasAccesoJframe.lProductos.forEach(producto->{
+        
+                    String[] rowsTabla = {
+                producto.nombre,
+                producto.precio+"",
+                producto.cantidad+"",
+                producto.proveedor
+            };
+            mdProducto.addRow(rowsTabla);
+            
+        });
         tbProducto.setModel(mdProducto);
     }
 
@@ -44,6 +56,7 @@ public class productoPane extends javax.swing.JFrame {
 
     public productoPane(ArrayList<Proveedor> proveedores, vVentas ventasJframe) {
         initComponents();
+        this.ventasAccesoJframe = ventasJframe;
         rellenarTabla();
         reproducirCbProveedor(proveedores);
     }
@@ -72,6 +85,11 @@ public class productoPane extends javax.swing.JFrame {
         btnAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Ver Productos"));
 
@@ -190,6 +208,7 @@ public class productoPane extends javax.swing.JFrame {
             producto.precio = Double.parseDouble(spPrecio.getValue().toString());
             producto.cantidad = spCantidad.getValue().hashCode();
             String proveedor = cbProveedor.getSelectedItem().toString();
+            producto.proveedor =proveedor;
             lProducto.add(producto);
             lProducto.forEach((rows) -> {
                 String[] rowsTabla = {
@@ -201,10 +220,15 @@ public class productoPane extends javax.swing.JFrame {
                 mdProducto.addRow(rowsTabla);
             });
             tbProducto.setModel(mdProducto);
+            ventasAccesoJframe.lProductos.add(producto);
         }else {
             JOptionPane.showMessageDialog(null, "Agregue proveedor si falta, no se puede dejar vacio");
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+       ventasAccesoJframe.ActializarCb("cbProducto");
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
