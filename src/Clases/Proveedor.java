@@ -12,4 +12,11 @@ package Clases;
 public class Proveedor {
     public String nombre;
     public String contacto;
+
+    public Proveedor(String nombre, String contacto) {
+        this.nombre = nombre;
+        this.contacto = contacto;
+    }
+    
+    
 }
