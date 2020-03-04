@@ -19,6 +19,7 @@ public class vVentas extends javax.swing.JFrame {
         initComponents();
     }
     ArrayList<Cliente>lClientes = new ArrayList<>();
+    ArrayList<Proveedor> lProveedores = new ArrayList<Proveedor>();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -192,6 +193,11 @@ public class vVentas extends javax.swing.JFrame {
         jmAñadir.add(jmProveedor);
 
         jmVendedor.setText("Vendedor");
+        jmVendedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmVendedorMouseClicked(evt);
+            }
+        });
         jmAñadir.add(jmVendedor);
 
         jMenuBar1.add(jmAñadir);
@@ -274,8 +280,12 @@ public class vVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_jmClientesActionPerformed
 
     private void jmClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmClientesMouseClicked
-        this.showNewModule(1);
+        
     }//GEN-LAST:event_jmClientesMouseClicked
+
+    private void jmVendedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmVendedorMouseClicked
+       this.showNewModule(1);
+    }//GEN-LAST:event_jmVendedorMouseClicked
 
     
     /**
@@ -293,11 +303,15 @@ public class vVentas extends javax.swing.JFrame {
         switch(indexModule){
         
             case 0: // proveedor
-                proveedorPane proveedorpane = new proveedorPane();
-                proveedorpane.setVisible(true);
+                Proveedores pp = new Proveedores(lProveedores);
+                pp.setVisible(true);
+                break;
             case 1:
                 clientePane cp = new clientePane(lClientes);
                 cp.setVisible(true);
+                break;
+            case 2:
+                break;
         }
         
     }
