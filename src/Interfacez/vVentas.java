@@ -20,6 +20,7 @@ public class vVentas extends javax.swing.JFrame {
     }
     ArrayList<Cliente>lClientes = new ArrayList<>();
     ArrayList<Proveedor> lProveedores = new ArrayList<Proveedor>();
+    ArrayList<Vendedor> lVendedor = new ArrayList<Vendedor>();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -303,7 +304,7 @@ public class vVentas extends javax.swing.JFrame {
         switch(indexModule){
         
             case 0: // proveedor
-                proveedorPane pp = new proveedorPane(lProveedores);
+                Proveedores pp = new Proveedores(lProveedores,this);
                 pp.setVisible(true);
                 break;
             case 1:// cliente
@@ -311,6 +312,8 @@ public class vVentas extends javax.swing.JFrame {
                 cp.setVisible(true);
                 break;
             case 2:
+                VendedoresFrame vp = new VendedoresFrame(lVendedor,this);
+                vp.setVisible(true);
                 break;
         }
         
