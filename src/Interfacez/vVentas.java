@@ -5,6 +5,8 @@
  */
 package Interfacez;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author raulh
@@ -63,7 +65,7 @@ public class vVentas extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sistema  Farmacia");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Vender"));
@@ -80,6 +82,11 @@ public class vVentas extends javax.swing.JFrame {
         spCantidad.setBorder(null);
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnVender.setText("Vender");
 
@@ -174,6 +181,11 @@ public class vVentas extends javax.swing.JFrame {
         jmAñadir.add(jmProductos);
 
         jmProveedor.setText("Proveedor");
+        jmProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmProveedorMouseClicked(evt);
+            }
+        });
         jmProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmProveedorActionPerformed(evt);
@@ -219,10 +231,39 @@ public class vVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_jmAñadirActionPerformed
 
     private void jmProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmProveedorActionPerformed
-        addProveedor panelProveedor = new addProveedor();
-        panelProveedor.setVisible(true);
+
     }//GEN-LAST:event_jmProveedorActionPerformed
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void jmProveedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmProveedorMouseClicked
+        this.showNewModule(0);
+    }//GEN-LAST:event_jmProveedorMouseClicked
+
+    
+    /**
+     * FUNCTIONS
+     */
+    
+    /**
+     * 
+     * @param indexModule
+     * @return void
+     * @throws New window
+     */
+    void showNewModule(Integer indexModule){
+    
+        switch(indexModule){
+        
+            case 0: // proveedor
+                proveedorPane proveedorpane = new proveedorPane();
+                proveedorpane.setVisible(true);
+        }
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
