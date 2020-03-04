@@ -182,6 +182,7 @@ public class Proveedores extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
           if(!this.nombre.getText().equals("") && !this.contacto.getText().equals("")){
               ventasAccesoJframe.lProveedores.add(new Proveedor(this.nombre.getText(),this.contacto.getText()));
+              this.llenarTabla(ventasAccesoJframe.lProveedores);
           }else{
           JOptionPane.showMessageDialog(null,"Ingrese por favor los 2 campos que aparecen el formularo para poder agregarlo");
                   }
