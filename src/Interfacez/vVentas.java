@@ -303,10 +303,10 @@ public class vVentas extends javax.swing.JFrame {
         switch(indexModule){
         
             case 0: // proveedor
-                Proveedores pp = new Proveedores(lProveedores);
+                proveedorPane pp = new proveedorPane(lProveedores);
                 pp.setVisible(true);
                 break;
-            case 1:
+            case 1:// cliente
                 clientePane cp = new clientePane(lClientes);
                 cp.setVisible(true);
                 break;

@@ -5,6 +5,9 @@
  */
 package Interfacez;
 
+import Clases.Proveedor;
+import java.util.ArrayList;
+
 /**
  *
  * @author monica
@@ -16,6 +19,10 @@ public class proveedorPane extends javax.swing.JFrame {
      */
     public proveedorPane() {
         initComponents();
+    }
+
+    proveedorPane(ArrayList<Proveedor> lProveedores) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
