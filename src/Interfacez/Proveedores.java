@@ -20,39 +20,38 @@ public class Proveedores extends javax.swing.JFrame {
      * Creates new form Proveedores
      */
     public vVentas ventasAccesoJframe;
+
     public Proveedores() {
         initComponents();
     }
     DefaultTableModel mdProveedor = new DefaultTableModel();
-    
+
     Proveedores(ArrayList<Proveedor> proveedores, vVentas ventasJframe) {
         initComponents();
         this.llenarTabla(proveedores);
         this.ventasAccesoJframe = ventasJframe;
     }
 
-    
-        public void llenarTabla(ArrayList<Proveedor> lProveedores){
-            mdProveedor = new DefaultTableModel();
-    ArrayList<Object>lCabeza = new ArrayList<>();
-    lCabeza.add("Nombre");
-    lCabeza.add("Datos");
+    public void llenarTabla(ArrayList<Proveedor> lProveedores) {
+        mdProveedor = new DefaultTableModel();
+        ArrayList<Object> lCabeza = new ArrayList<>();
+        lCabeza.add("Nombre");
+        lCabeza.add("Datos");
         for (Object object : lCabeza) {
             mdProveedor.addColumn(object);
         }
         tbProveedor.setModel(mdProveedor);
-    lProveedores.forEach(rows->{
-        String [] rowsTabla = {
-            rows.nombre,
-            rows.contacto
-        };
-        mdProveedor.addRow(rowsTabla);
-    });
-    tbProveedor.setModel(mdProveedor);
-    
+        lProveedores.forEach(rows -> {
+            String[] rowsTabla = {
+                rows.nombre,
+                    rows.contacto
+            };
+            mdProveedor.addRow(rowsTabla);
+        });
+        tbProveedor.setModel(mdProveedor);
+
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -180,12 +179,12 @@ public class Proveedores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          if(!this.nombre.getText().equals("") && !this.contacto.getText().equals("")){
-              ventasAccesoJframe.lProveedores.add(new Proveedor(this.nombre.getText(),this.contacto.getText()));
-              this.llenarTabla(ventasAccesoJframe.lProveedores);
-          }else{
-          JOptionPane.showMessageDialog(null,"Ingrese por favor los 2 campos que aparecen el formularo para poder agregarlo");
-                  }
+        if (!this.nombre.getText().equals("") && !this.contacto.getText().equals("")) {
+            ventasAccesoJframe.lProveedores.add(new Proveedor(this.nombre.getText(), this.contacto.getText()));
+            this.llenarTabla(ventasAccesoJframe.lProveedores);
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese por favor los 2 campos que aparecen el formularo para poder agregarlo");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
