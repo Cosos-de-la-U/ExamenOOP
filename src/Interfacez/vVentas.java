@@ -51,6 +51,7 @@ public class vVentas extends javax.swing.JFrame {
         jmProductos = new javax.swing.JMenu();
         jmProveedor = new javax.swing.JMenu();
         jmVendedor = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
         jmVender = new javax.swing.JMenu();
         jmClientes = new javax.swing.JMenu();
 
@@ -67,7 +68,7 @@ public class vVentas extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema  Farmacia");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Vender"));
@@ -115,11 +116,13 @@ public class vVentas extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(cbProducto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(35, 35, 35)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(btnAgregar)
                 .addGap(18, 18, 18)
                 .addComponent(btnVender)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,18 +138,15 @@ public class vVentas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(cbProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAgregar)
-                            .addComponent(btnVender)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(spCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(spCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregar)
+                    .addComponent(btnVender))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Ventas"));
@@ -180,7 +180,7 @@ public class vVentas extends javax.swing.JFrame {
         });
         jmAñadir.add(jmProductos);
 
-        jmProveedor.setText("Proveedor");
+        jmProveedor.setText("Proveedores");
         jmProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jmProveedorMouseClicked(evt);
@@ -193,13 +193,21 @@ public class vVentas extends javax.swing.JFrame {
         });
         jmAñadir.add(jmProveedor);
 
-        jmVendedor.setText("Vendedor");
+        jmVendedor.setText("Vendedores");
         jmVendedor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jmVendedorMouseClicked(evt);
             }
         });
         jmAñadir.add(jmVendedor);
+
+        jMenu1.setText("Clientes");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        jmAñadir.add(jMenu1);
 
         jMenuBar1.add(jmAñadir);
 
@@ -285,8 +293,12 @@ public class vVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_jmClientesMouseClicked
 
     private void jmVendedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmVendedorMouseClicked
-       this.showNewModule(1);
+       this.showNewModule(2);
     }//GEN-LAST:event_jmVendedorMouseClicked
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        this.showNewModule(1);      // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu1MouseClicked
 
     
     /**
@@ -311,7 +323,7 @@ public class vVentas extends javax.swing.JFrame {
                 clientePane cp = new clientePane(lClientes);
                 cp.setVisible(true);
                 break;
-            case 2:
+            case 2: // vendedor
                 VendedoresFrame vp = new VendedoresFrame(lVendedor,this);
                 vp.setVisible(true);
                 break;
@@ -363,6 +375,7 @@ public class vVentas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
