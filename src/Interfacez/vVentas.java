@@ -219,8 +219,7 @@ public class vVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_jmAñadirActionPerformed
 
     private void jmProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmProveedorActionPerformed
-        addProveedor panelProveedor = new addProveedor();
-        panelProveedor.setVisible(true);
+
     }//GEN-LAST:event_jmProveedorActionPerformed
 
     /**
