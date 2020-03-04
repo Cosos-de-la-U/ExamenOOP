@@ -22,6 +22,7 @@ public class productoPane extends javax.swing.JFrame {
     vVentas ventasAccesoJframe;
 
     public void rellenarTabla() {
+        mdProducto = new DefaultTableModel();
         ArrayList<Object> lCabeza = new ArrayList<>();
         lCabeza.add("Nombre");
         lCabeza.add("Precio");
@@ -202,25 +203,14 @@ public class productoPane extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         //Añadir productos como ejemplo
         if (cbProveedor.getSelectedItem() != null) {
-            mdProducto.setRowCount(0);
             Producto producto = new Producto();
             producto.nombre = jtNombre.getText();
             producto.precio = Double.parseDouble(spPrecio.getValue().toString());
             producto.cantidad = spCantidad.getValue().hashCode();
             String proveedor = cbProveedor.getSelectedItem().toString();
             producto.proveedor =proveedor;
-            lProducto.add(producto);
-            lProducto.forEach((rows) -> {
-                String[] rowsTabla = {
-                    rows.nombre,
-                    Double.toString(rows.precio),
-                    Integer.toString(rows.cantidad),
-                    proveedor
-                };
-                mdProducto.addRow(rowsTabla);
-            });
-            tbProducto.setModel(mdProducto);
             ventasAccesoJframe.lProductos.add(producto);
+            this.rellenarTabla();
         }else {
             JOptionPane.showMessageDialog(null, "Agregue proveedor si falta, no se puede dejar vacio");
         }
