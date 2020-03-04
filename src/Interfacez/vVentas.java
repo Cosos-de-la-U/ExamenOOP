@@ -281,11 +281,11 @@ public class vVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_jmClientesActionPerformed
 
     private void jmClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmClientesMouseClicked
-        
+        this.showNewModule(1);
     }//GEN-LAST:event_jmClientesMouseClicked
 
     private void jmVendedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmVendedorMouseClicked
-       this.showNewModule(1);
+       this.showNewModule(2);
     }//GEN-LAST:event_jmVendedorMouseClicked
 
     
