@@ -5,19 +5,20 @@
  */
 package Interfacez;
 
+import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
+import Clases.*;
 /**
  *
  * @author raulh
  */
 public class vVentas extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Ventas
-     */
     public vVentas() {
         initComponents();
     }
-
+    ArrayList<Cliente>lClientes = new ArrayList<>();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,6 +50,7 @@ public class vVentas extends javax.swing.JFrame {
         jmProveedor = new javax.swing.JMenu();
         jmVendedor = new javax.swing.JMenu();
         jmVender = new javax.swing.JMenu();
+        jmClientes = new javax.swing.JMenu();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -63,7 +65,7 @@ public class vVentas extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sistema  Farmacia");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Vender"));
@@ -80,6 +82,11 @@ public class vVentas extends javax.swing.JFrame {
         spCantidad.setBorder(null);
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnVender.setText("Vender");
 
@@ -174,6 +181,11 @@ public class vVentas extends javax.swing.JFrame {
         jmAñadir.add(jmProductos);
 
         jmProveedor.setText("Proveedor");
+        jmProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmProveedorMouseClicked(evt);
+            }
+        });
         jmProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmProveedorActionPerformed(evt);
@@ -188,6 +200,19 @@ public class vVentas extends javax.swing.JFrame {
 
         jmVender.setText("Vender");
         jMenuBar1.add(jmVender);
+
+        jmClientes.setText("Clientes");
+        jmClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmClientesMouseClicked(evt);
+            }
+        });
+        jmClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmClientesActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jmClientes);
 
         setJMenuBar(jMenuBar1);
 
@@ -222,6 +247,63 @@ public class vVentas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jmProveedorActionPerformed
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        Cliente cliente = new Cliente();
+        cliente.nombre = jtNombre.getText();
+        cliente.contacto = jtContacto.getText();
+        //Verificar que no se repita
+        if (lClientes.size() == 0) {
+            lClientes.add(cliente);
+        }else {
+            boolean repetido = false;
+            for (int i = 0; i < lClientes.size(); i++) {
+                if (cliente.nombre.equals(lClientes.get(i).nombre) && cliente.contacto.equals(lClientes.get(i).contacto)) {
+                    repetido =  true;
+                }
+            }
+            if (repetido == false) {
+                lClientes.add(cliente);
+            }
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void jmProveedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmProveedorMouseClicked
+        this.showNewModule(0);
+    }//GEN-LAST:event_jmProveedorMouseClicked
+
+    private void jmClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmClientesActionPerformed
+        
+    }//GEN-LAST:event_jmClientesActionPerformed
+
+    private void jmClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmClientesMouseClicked
+        this.showNewModule(1);
+    }//GEN-LAST:event_jmClientesMouseClicked
+
+    
+    /**
+     * FUNCTIONS
+     */
+    
+    /**
+     * 
+     * @param indexModule
+     * @return void
+     * @throws New window
+     */
+    void showNewModule(Integer indexModule){
+    
+        switch(indexModule){
+        
+            case 0: // proveedor
+                proveedorPane proveedorpane = new proveedorPane();
+                proveedorpane.setVisible(true);
+            case 1:
+                clientePane cp = new clientePane(lClientes);
+                cp.setVisible(true);
+        }
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -274,6 +356,7 @@ public class vVentas extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JMenu jmAñadir;
+    private javax.swing.JMenu jmClientes;
     private javax.swing.JMenu jmProductos;
     private javax.swing.JMenu jmProveedor;
     private javax.swing.JMenu jmVendedor;
