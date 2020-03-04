@@ -84,6 +84,11 @@ public class VendedoresFrame extends javax.swing.JFrame {
         tbVendedores = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Agregar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
 
@@ -220,6 +225,11 @@ public class VendedoresFrame extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        //AL CERRAR LA VENTA SE ACTUALIZARA EL COMBOBOX DE VENDEDORES EN LA PANTALLA PRINCIPAL
+        ventasAccesoJframe.ActializarCb("cbVendedores");
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
