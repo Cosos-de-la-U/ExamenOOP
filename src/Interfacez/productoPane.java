@@ -60,6 +60,7 @@ public class productoPane extends javax.swing.JFrame {
         this.ventasAccesoJframe = ventasJframe;
         rellenarTabla();
         reproducirCbProveedor(proveedores);
+        this.lblCompras.setText(this.ventasAccesoJframe.compras+"");
     }
 
     /**
@@ -84,6 +85,8 @@ public class productoPane extends javax.swing.JFrame {
         spCantidad = new javax.swing.JSpinner();
         cbProveedor = new javax.swing.JComboBox<>();
         btnAgregar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        lblCompras = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -117,6 +120,8 @@ public class productoPane extends javax.swing.JFrame {
 
         jLabel4.setText("Proveedor:");
 
+        spPrecio.setModel(new javax.swing.SpinnerNumberModel(0.01d, 0.01d, null, 1.0d));
+
         spCantidad.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
         btnAgregar.setText("Agregar");
@@ -125,6 +130,10 @@ public class productoPane extends javax.swing.JFrame {
                 btnAgregarActionPerformed(evt);
             }
         });
+
+        jLabel5.setText("Compras:");
+
+        lblCompras.setText("$0.0");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -150,7 +159,11 @@ public class productoPane extends javax.swing.JFrame {
                             .addComponent(jtNombre)
                             .addComponent(spPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))))
                 .addGap(76, 76, 76)
-                .addComponent(btnAgregar)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnAgregar)
+                    .addComponent(jLabel5))
+                .addGap(47, 47, 47)
+                .addComponent(lblCompras)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -159,7 +172,9 @@ public class productoPane extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(lblCompras))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -211,6 +226,8 @@ public class productoPane extends javax.swing.JFrame {
             producto.proveedor =proveedor;
             ventasAccesoJframe.lProductos.add(producto);
             this.rellenarTabla();
+            this.ventasAccesoJframe.compras+=(producto.precio*producto.cantidad);
+            this.lblCompras.setText(this.ventasAccesoJframe.compras+"");
         }else {
             JOptionPane.showMessageDialog(null, "Agregue proveedor si falta, no se puede dejar vacio");
         }
@@ -262,10 +279,12 @@ public class productoPane extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jtNombre;
+    private javax.swing.JLabel lblCompras;
     private javax.swing.JSpinner spCantidad;
     private javax.swing.JSpinner spPrecio;
     private javax.swing.JTable tbProducto;

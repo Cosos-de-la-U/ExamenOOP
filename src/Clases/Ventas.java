@@ -12,14 +12,20 @@ package Clases;
 public class Ventas {
     public String nombre;
     public double cantidad;
-    public double total;
+    public String Vendedor;
+    public String total;
+    public String producto;
 
+    public Ventas(String nombre, double cantidad, String Vendedor, String total, String producto) {
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.Vendedor = Vendedor;
+        this.total = total;
+        this.producto = producto;
+    }
+    
+    
     public Ventas() {
     }
 
-    public Ventas(String nombre, double cantidad, double total) {
-        this.nombre = nombre;
-        this.cantidad = cantidad;
-        this.total = total;
-    }
 }
