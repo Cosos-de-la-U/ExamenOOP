@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author raulh
+ * @author raulpenate
  */
 public class productoPane extends javax.swing.JFrame {
 
